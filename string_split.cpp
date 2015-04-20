@@ -32,18 +32,22 @@ int main(int argc, char const *argv[])
 
 	for(int i = 0; i < baseString.length(); ++i)
 	{
+		// std::cout << "We are at " << i << std::endl;
+		std::cout << i;
 		for(std::vector<std::string>::iterator it = strings.begin(); it != strings.end(); ++it)
 		{
-			found = baseString.find(*it);
-			if (found == 0)
+			std::cout << "We are matching " << *it << " at " << i << ", " << baseString[i] << std::endl;
+			found = baseString.find(*it, i);
+			if (found == i)
 			{
+
 				std::cout << *it;
 				i += (*it).length() - 1;
 				std::cout << (*it).length() - 1;
 				break;
 			}
 		}
-		std::cout << "broken";
+		// std::cout << "broken";
 		if (found != 0) std::cout << baseString[i];
 		if (i != baseString.length() - 1)
 		{
