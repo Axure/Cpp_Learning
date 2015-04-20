@@ -23,32 +23,36 @@ int main(int argc, char const *argv[])
 	Compare compareString;
 	std::sort(strings.begin(), strings.end(), compareString);
 
-	std::size_t found;
+	std::size_t foundPos;
 
-	for(std::vector<std::string>::iterator it = strings.begin(); it != strings.end(); ++it)
-	{
-		std::cout << *it << std::endl;
-	}
+	// for(std::vector<std::string>::iterator it = strings.begin(); it != strings.end(); ++it)
+	// {
+	// 	std::cout << *it << std::endl;
+	// }
+
+	bool found;
 
 	for(int i = 0; i < baseString.length(); ++i)
 	{
 		// std::cout << "We are at " << i << std::endl;
-		std::cout << i;
+		// std::cout << i;
+		found = false;
 		for(std::vector<std::string>::iterator it = strings.begin(); it != strings.end(); ++it)
 		{
-			std::cout << "We are matching " << *it << " at " << i << ", " << baseString[i] << std::endl;
-			found = baseString.find(*it, i);
-			if (found == i)
+			// std::cout << "We are matching " << *it << " at " << i << ", " << baseString[i] << std::endl;
+			foundPos = baseString.find(*it, i);
+			if (foundPos == i)
 			{
 
 				std::cout << *it;
 				i += (*it).length() - 1;
-				std::cout << (*it).length() - 1;
+				found = true;
+				// std::cout << (*it).length() - 1;
 				break;
 			}
 		}
 		// std::cout << "broken";
-		if (found != 0) std::cout << baseString[i];
+		if (!found) std::cout << baseString[i];
 		if (i != baseString.length() - 1)
 		{
 			std::cout << " ";
